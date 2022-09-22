@@ -12,7 +12,7 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY /app/dist/* /usr/share/nginx/html/app/
+COPY --from=build /app/dist/* /usr/share/nginx/html/app/
 
 # Copy nginx config
 COPY nginx.conf  /etc/nginx/nginx.conf
